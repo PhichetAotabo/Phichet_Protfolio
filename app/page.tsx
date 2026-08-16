@@ -1,69 +1,229 @@
-import Image from "next/image";
+"use client";
+
+import {
+  Button,
+  Image,
+  CompoundButton,
+  Card,
+  CardFooter,
+  CardHeader,
+  CardPreview,
+} from "@fluentui/react-components";
+import {
+  Body1,
+  Caption1,
+  Subtitle1,
+  Subtitle2,
+  Title1,
+  Display,
+  makeStyles,
+  tokens,
+} from "@fluentui/react-components";
+
+import {
+  DesignIdeasRegular,
+  AppsColor,
+  BeachColor,
+  BuildingColor,
+  CodeBlockColor,
+} from "@fluentui/react-icons";
+
+const resolveAsset = (asset: string) => {
+  const ASSET_URL =
+    "https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/src/assets/";
+
+  return `${ASSET_URL}${asset}`;
+};
+
+const useStyles = makeStyles({
+  dangerText: {
+    color: tokens.colorPaletteRedForeground1,
+    fontWeight: tokens.fontWeightSemibold,
+  },
+  card: {
+    margin: "auto",
+    maxWidth: "420px",
+    minWidth: "300px",
+    width: "100%",
+    rounded: tokens.borderRadius2XLarge,
+  },
+
+  logo: {
+    borderRadius: "4px",
+    width: "48px",
+    height: "48px",
+  },
+});
 
 export default function Home() {
+  const styles = useStyles();
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <div>
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          flexDirection: "row",
+          gap: 16,
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "32px 0",
+        }}
+      >
+        <Image src="./photo.png" alt="Avatar" height={500} />
+
+        <div
+          className="text-content"
+          style={{ display: "flex", flexDirection: "column", gap: 16 }}
+        >
+          <Title1>Welcome to</Title1>
+          <Display style={{ color: tokens.colorBrandForeground1 }}>
+            Phichet Aotabo&apos;s Portfolio
+          </Display>
+          <h4>Hello, I&apos;m Phichet Aotabo</h4>
+          <div style={{ display: "flex", flexDirection: "row", gap: 16 }}>
+            <Button
+              appearance="primary"
+              size="large"
+              icon={<DesignIdeasRegular />}
+              iconPosition="before"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              View my work
+            </Button>
+            <Button
+              appearance="subtle"
+              size="large"
+              icon={null}
+              iconPosition="before"
             >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+              Get contact
+            </Button>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+      </div>
+
+      <section
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          flexDirection: "row",
+          gap: tokens.spacingHorizontalL,
+          padding: 32,
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <CompoundButton
+          appearance="subtle"
+          secondaryContent="Secondary content"
+          icon={<AppsColor />}
+        >
+          UX/UI Design
+        </CompoundButton>
+        <CompoundButton
+          appearance="subtle"
+          secondaryContent="Secondary content"
+          icon={<BeachColor />}
+        >
+          Art & Illustration
+        </CompoundButton>
+        <CompoundButton
+          appearance="subtle"
+          secondaryContent="Secondary content"
+          icon={<BuildingColor />}
+        >
+          3D Modeling
+        </CompoundButton>
+        <CompoundButton
+          appearance="subtle"
+          secondaryContent="Secondary content"
+          icon={<CodeBlockColor />}
+        >
+          Development
+        </CompoundButton>
+      </section>
+      <section
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          flexDirection: "row",
+          gap: tokens.spacingHorizontalXL,
+          padding: 32,
+
+          justifyContent: "center",
+        }}
+      >
+        <Card className={styles.card}>
+          <CardPreview>
             <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
+              src={"/Nilecon_map.jpg"}
+              alt="Preview of a Word document: About Us - Overview"
+              shape="rounded"
+              width={40}
+              height={30}
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+          </CardPreview>
+          <CardHeader
+            style={{ position: "absolute", top: 32, left: 32 }}
+            header={<Subtitle2>Project</Subtitle2>}
+            description={
+              <Caption1 style={{ color: tokens.colorNeutralForeground3 }}>
+                description
+              </Caption1>
+            }
+          />
+
+          {/* <CardFooter>
+            <Button icon={<ArrowReplyRegular fontSize={16} />}>Reply</Button>
+            <Button icon={<ShareRegular fontSize={16} />}>Share</Button>
+          </CardFooter> */}
+        </Card>
+        <Card className={styles.card}>
+          <CardPreview>
+            <Image
+              src={"/Nilecon_map.jpg"}
+              alt="Preview of a Word document: About Us - Overview"
+              shape="rounded"
+              width={40}
+              height={30}
+            />
+          </CardPreview>
+          <CardHeader
+            style={{ position: "absolute", top: 32, left: 32 }}
+            header={<Subtitle2>Project</Subtitle2>}
+            description={
+              <Caption1 style={{ color: tokens.colorNeutralForeground3 }}>
+                description
+              </Caption1>
+            }
+          />
+
+          {/* <CardFooter>
+            <Button icon={<ArrowReplyRegular fontSize={16} />}>Reply</Button>
+            <Button icon={<ShareRegular fontSize={16} />}>Share</Button>
+          </CardFooter> */}
+        </Card>
+        <Card className={styles.card}>
+          <CardPreview>
+            <Image
+              src={"/Nilecon_map.jpg"}
+              alt="Preview of a Word document: About Us - Overview"
+              shape="rounded"
+              width={40}
+              height={30}
+            />
+          </CardPreview>
+          <CardHeader
+            style={{ position: "absolute", top: 32, left: 32 }}
+            header={<Subtitle2>Project</Subtitle2>}
+            description={
+              <Caption1 style={{ color: tokens.colorNeutralForeground3 }}>
+                description
+              </Caption1>
+            }
+          />
+        </Card>
+      </section>
     </div>
   );
 }
