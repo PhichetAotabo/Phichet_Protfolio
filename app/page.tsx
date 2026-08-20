@@ -70,7 +70,7 @@ export default function Home() {
           padding: "32px 0",
         }}
       >
-        <Image src="./photo.png" alt="Avatar" height={500} />
+        <Image src="photo.png" alt="Avatar" height={500} />
 
         <div
           className="text-content"
