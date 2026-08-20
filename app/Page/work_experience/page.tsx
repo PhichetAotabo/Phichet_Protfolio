@@ -1,6 +1,14 @@
 "use client";
 
-import { Badge, Body1, Card, Caption2Strong, Title3, tokens } from "@fluentui/react-components";
+import {
+  Image,
+  Badge,
+  Body1,
+  Card,
+  Caption2Strong,
+  Title3,
+  tokens,
+} from "@fluentui/react-components";
 
 /**
  * Figma: Port / node-id 181-11407 ("Work & Experience")
@@ -55,9 +63,9 @@ const experiences: Experience[] = [
     ],
   },
   {
-    id: "aihcm-2",
+    id: "it-cat",
     duration: "Oct 2024 - June 2026 (9 Months)",
-    company: "AI HCM Co. Ltd",
+    company: "IT-CAT Co. Ltd",
     logo: "/work-experience/logo-aihcm2.png",
     logoFit: "contain",
     badges: ["Full Time", "UX / UI Designer"],
@@ -98,17 +106,23 @@ const experiences: Experience[] = [
     reverse: true,
   },
   {
-    id: "bonchon-2",
-    duration: "May 2022 - Nov 2022 (6 Months)",
-    company: "Bonchon Chicken Time",
-    logo: "/work-experience/logo-bonchon.png",
+    id: "blueprint",
+    duration: "May 2018 - July 2018 (2 Months)",
+    company: "Blueprint Graphic & Web Design",
+    logo: "/work-experience/Blueprint.png",
     logoFit: "contain",
-    badges: ["Full Time", "Cooker"],
-    description: "Staff at Bonchons",
+    badges: ["Internship"],
+    description: "Internship",
   },
 ];
 
-function DurationBadge({ text, align }: { text: string; align: "flex-start" | "flex-end" }) {
+function DurationBadge({
+  text,
+  align,
+}: {
+  text: string;
+  align: "flex-start" | "flex-end";
+}) {
   return (
     <div
       style={{
@@ -129,7 +143,15 @@ function DurationBadge({ text, align }: { text: string; align: "flex-start" | "f
 function CompanyDataCard({ exp }: { exp: Experience }) {
   const align = exp.reverse ? "flex-end" : "flex-start";
   return (
-    <div style={{ display: "flex", flex: 1, maxWidth: 480, flexDirection: "column", alignItems: align }}>
+    <div
+      style={{
+        display: "flex",
+        flex: 1,
+        maxWidth: 480,
+        flexDirection: "column",
+        alignItems: align,
+      }}
+    >
       <Card
         appearance="filled"
         style={{
@@ -137,37 +159,66 @@ function CompanyDataCard({ exp }: { exp: Experience }) {
           padding: tokens.spacingHorizontalL,
           gap: tokens.spacingVerticalMNudge,
           borderRadius: tokens.borderRadiusLarge,
-          alignItems: align,
+          alignItems: "flex-start",
         }}
       >
-        <div style={{ display: "flex", gap: tokens.spacingHorizontalMNudge, alignItems: "center", justifyContent: "center" }}>
-          <img
+        <div
+          style={{
+            display: "flex",
+            gap: tokens.spacingHorizontalMNudge,
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Image
             src={exp.logo}
             alt={`${exp.company} logo`}
             width={32}
             height={32}
             style={{ objectFit: exp.logoFit, flexShrink: 0 }}
           />
-          <Title3 style={{ color: tokens.colorBrandForeground2 }}>{exp.company}</Title3>
+          <Title3 style={{ color: tokens.colorBrandForeground2 }}>
+            {exp.company}
+          </Title3>
         </div>
 
-        <div style={{ display: "flex", gap: tokens.spacingHorizontalMNudge, width: "100%", justifyContent: align === "flex-end" ? "flex-end" : "flex-start" }}>
+        <div
+          style={{
+            display: "flex",
+            gap: tokens.spacingHorizontalMNudge,
+            width: "100%",
+            //justifyContent: align === "flex-end" ? "flex-end" : "flex-start",
+          }}
+        >
           {exp.badges.map((badge) => (
-            <Badge key={badge} appearance="outline" color="brand" shape="rounded">
+            <Badge
+              key={badge}
+              appearance="outline"
+              color="brand"
+              shape="rounded"
+            >
               <Caption2Strong>{badge}</Caption2Strong>
             </Badge>
           ))}
         </div>
 
-        <div style={{ width: "100%", textAlign: exp.reverse ? "right" : "left" }}>
+        <div style={{ width: "100%" }}>
           <Body1 block style={{ color: tokens.colorBrandForeground2 }}>
             {exp.description}
           </Body1>
           {exp.bullets && (
-            <ul style={{ margin: 0, paddingInlineStart: 21, listStyleType: "disc" }}>
+            <ul
+              style={{
+                margin: 0,
+                paddingInlineStart: 21,
+                listStyleType: "disc",
+              }}
+            >
               {exp.bullets.map((bullet) => (
                 <li key={bullet}>
-                  <Body1 style={{ color: tokens.colorBrandForeground2 }}>{bullet}</Body1>
+                  <Body1 style={{ color: tokens.colorBrandForeground2 }}>
+                    {bullet}
+                  </Body1>
                 </li>
               ))}
             </ul>
@@ -179,7 +230,12 @@ function CompanyDataCard({ exp }: { exp: Experience }) {
 }
 
 function TimelineItem({ exp }: { exp: Experience }) {
-  const duration = <DurationBadge text={exp.duration} align={exp.reverse ? "flex-start" : "flex-end"} />;
+  const duration = (
+    <DurationBadge
+      text={exp.duration}
+      align={exp.reverse ? "flex-start" : "flex-end"}
+    />
+  );
   const card = <CompanyDataCard exp={exp} />;
 
   return (
@@ -237,7 +293,8 @@ export default function WorkExperience() {
             transform: "translateX(-50%)",
             backgroundColor: tokens.colorBrandBackground,
           }}
-        />
+        />{" "}
+        {/*เส้นตรงกลาง*/}
         <div
           style={{
             display: "flex",

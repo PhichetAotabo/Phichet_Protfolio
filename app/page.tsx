@@ -80,7 +80,7 @@ export default function Home() {
           <Display style={{ color: tokens.colorBrandForeground1 }}>
             Phichet Aotabo&apos;s Portfolio
           </Display>
-          <h4>Hello, I&apos;m Phichet Aotabo</h4>
+          <Title1>UX/UI Designer, Full Stack Designer</Title1>
           <div style={{ display: "flex", flexDirection: "row", gap: 16 }}>
             <Button
               appearance="primary"
@@ -115,28 +115,28 @@ export default function Home() {
       >
         <CompoundButton
           appearance="subtle"
-          secondaryContent="Secondary content"
+          secondaryContent="4 Projects"
           icon={<AppsColor />}
         >
           UX/UI Design
         </CompoundButton>
         <CompoundButton
           appearance="subtle"
-          secondaryContent="Secondary content"
+          secondaryContent="9 Pieces"
           icon={<BeachColor />}
         >
           Art & Illustration
         </CompoundButton>
         <CompoundButton
           appearance="subtle"
-          secondaryContent="Secondary content"
+          secondaryContent="2 Pieces"
           icon={<BuildingColor />}
         >
           3D Modeling
         </CompoundButton>
         <CompoundButton
           appearance="subtle"
-          secondaryContent="Secondary content"
+          secondaryContent="2 Project"
           icon={<CodeBlockColor />}
         >
           Development

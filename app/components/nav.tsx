@@ -2,23 +2,72 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Button, Divider } from "@fluentui/react-components";
+import { usePathname } from "next/navigation";
+import {
+  Button,
+  Divider,
+  tokens,
+  type ButtonProps,
+} from "@fluentui/react-components";
 import {
   ArrowDownloadFilled,
   ArrowDownloadRegular,
 } from "@fluentui/react-icons";
 
+function MenuButton({
+  label,
+  href,
+  isActive,
+  icon,
+  hoverIcon,
+}: {
+  label: string;
+  href?: string;
+  isActive?: boolean;
+  icon?: ButtonProps["icon"];
+  hoverIcon?: ButtonProps["icon"];
+}) {
+  const [isIconFilled, setIsIconFilled] = useState(false);
+  const shouldNavigate = Boolean(href && !isActive);
+
+  return (
+    <Button
+      as={shouldNavigate ? "a" : undefined}
+      href={shouldNavigate ? href : undefined}
+      appearance="subtle"
+      size="medium"
+      icon={isIconFilled && hoverIcon ? hoverIcon : icon}
+      onMouseEnter={() => setIsIconFilled(true)}
+      onMouseLeave={() => setIsIconFilled(false)}
+    >
+      {label}
+    </Button>
+  );
+}
+
 export function Nav() {
-  const [isIconHovered, setIsIconHovered] = useState(false);
+  const pathname = usePathname();
+  const menuItems = [
+    { label: "Work & Experience", href: "/Page/work_experience" },
+    { label: "Projects", href: "/Page/projects" },
+    { label: "About" },
+    {
+      label: "Resume",
+      icon: <ArrowDownloadRegular />,
+      hoverIcon: <ArrowDownloadFilled />,
+    },
+  ];
+
   return (
     <nav
       style={{
         display: "flex",
         //flexDirection: "row",
-        height: "32px",
+        height: "64px",
         justifyContent: "flex-start",
         alignItems: "center",
         gap: "16px",
+        backgroundColor: tokens.colorNeutralBackground1,
       }}
     >
       <div
@@ -56,31 +105,13 @@ export function Nav() {
           gap: 16,
         }}
       >
-        <Button
-          as="a"
-          href="Page/work_experience"
-          appearance="subtle"
-          size="medium"
-        >
-          Work & Experience
-        </Button>
-        <Button appearance="subtle" size="medium">
-          Projects
-        </Button>
-        <Button appearance="subtle" size="medium">
-          About
-        </Button>
-        <Button
-          appearance="subtle"
-          size="medium"
-          icon={
-            isIconHovered ? <ArrowDownloadFilled /> : <ArrowDownloadRegular />
-          }
-          onMouseEnter={() => setIsIconHovered(true)}
-          onMouseLeave={() => setIsIconHovered(false)}
-        >
-          Resume
-        </Button>
+        {menuItems.map((item) => (
+          <MenuButton
+            key={item.label}
+            {...item}
+            isActive={pathname === item.href}
+          />
+        ))}
       </div>
 
       <Button appearance="primary" size="medium">

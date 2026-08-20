@@ -11,21 +11,24 @@ export default function RootLayout({
   return (
     <html lang="th">
       <Providers>
-        <header>
+        <header style={{ position: "sticky", top: 0, zIndex: 50, padding: 0 }}>
           <Nav></Nav>
         </header>
 
-        <body
-          style={{
-            padding: 8,
-            display: "flex",
-            flexDirection: "column",
-            gap: 16,
-            height: "100vh",
-            backgroundColor: tokens.colorNeutralBackground1,
-          }}
-        >
-          {children}
+        <body>
+          <div
+            style={{
+              margin: 0,
+              padding: 8,
+              display: "flex",
+              flexDirection: "column",
+              gap: 16,
+              minHeight: "100vh",
+              backgroundColor: tokens.colorNeutralBackground1,
+            }}
+          >
+            {children}
+          </div>
         </body>
         <Footer />
       </Providers>

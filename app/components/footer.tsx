@@ -52,7 +52,7 @@ export default function Footer() {
           </Subtitle2>
           {workItems.map((item) => (
             <Link
-              key={item.href}
+              key={item.label}
               appearance="subtle"
               href={item.href}
               style={{ color: tokens.colorNeutralForegroundInvertedLink }}
@@ -68,7 +68,7 @@ export default function Footer() {
           </Subtitle2>
           {projectItems.map((item) => (
             <Link
-              key={item.href}
+              key={item.label}
               appearance="subtle"
               href={item.href}
               style={{ color: tokens.colorNeutralForegroundInvertedLink }}
@@ -84,7 +84,7 @@ export default function Footer() {
           </Subtitle2>
           {contactItems.map((item) => (
             <Link
-              key={item.href}
+              key={item.label}
               appearance="subtle"
               href={item.href}
               style={{ color: tokens.colorNeutralForegroundInvertedLink }}
