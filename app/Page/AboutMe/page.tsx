@@ -403,6 +403,7 @@ export default function Page() {
             <CompoundButton
               key={title as string}
               className={styles.stat}
+              appearance="subtle"
               icon={
                 <span className={styles.statIcon}>
                   <Icon />
