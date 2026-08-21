@@ -50,7 +50,7 @@ export function Nav() {
   const menuItems = [
     { label: "Work & Experience", href: "/Page/work_experience" },
     { label: "Projects", href: "/Page/projects" },
-    { label: "About" },
+    { label: "About", href: "/Page/AboutMe" },
     {
       label: "Resume",
       icon: <ArrowDownloadRegular />,
